@@ -74,14 +74,17 @@ function App() {
   return (
     <main className="app">
       <div className="app__content">
-        <Header />
-
-        <section className="game">
+        <section className="game-topbar">
+          <Header />
+          
           <Scoreboard
             currentScore={currentScore}
             bestScore={bestScore}
           />
 
+        </section>
+
+        <section className="game">
           <GameBoard
             cards={cards}
             onCardClick={handleCardClick}

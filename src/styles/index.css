@@ -1,0 +1,280 @@
+:root {
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+	color: #f5f7fa;
+	background-color: #111827;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	min-width: 320px;
+	min-height: 100vh;
+}
+
+button {
+	font: inherit;
+}
+
+#root {
+	min-height: 100vh;
+}
+
+/* App */
+
+.app {
+	min-height: 100vh;
+	padding: clamp(1rem, 3vw, 2.5rem);
+	background:
+		radial-gradient(circle at top left, rgba(126, 34, 206, 0.35), transparent 30%),
+		radial-gradient(circle at bottom right, rgba(37, 99, 235, 0.3), transparent 35%),
+		#111827;
+}
+
+.app__content {
+	width: min(100%, 90rem);
+	margin: 0 auto;
+}
+
+/* Top Bar */
+
+.game-topbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: clamp(1.5rem, 4vw, 4rem);
+	margin-bottom: clamp(1.5rem, 4vw, 3rem);
+}
+
+/* Header */
+
+.game-header {
+	flex: 1;
+	text-align: right;
+}
+
+.game-header__content {
+	display: flex;
+	flex-direction: column;
+	align-items:flex-start;
+	gap: 0.5rem;
+}
+
+.game-header__title {
+	margin: 0;
+	font-size: clamp(2rem, 6vw, 4rem);
+	line-height: 1;
+	letter-spacing: -0.04em;
+}
+
+.game-header__instructions {
+	max-width: 40rem;
+	margin: 0;
+	color: #cbd5e1;
+	font-size: clamp(0.95rem, 2vw, 1.1rem);
+}
+
+/* Game */
+
+.game {
+	display: flex;
+	flex-direction: column;
+	gap: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+/* Scoreboard */
+
+.scoreboard {
+	display: flex;
+	justify-content: flex-start;
+	gap: clamp(1rem, 4vw, 3rem);
+}
+
+.scoreboard__score {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-width: clamp(7rem, 15vw, 10rem);
+	padding: 0.85rem 1.25rem;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 1rem;
+	background-color: rgba(255, 255, 255, 0.08);
+	box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.18);
+	backdrop-filter: blur(0.5rem);
+}
+
+.scoreboard__score--current {
+	border-color: rgba(96, 165, 250, 0.35);
+}
+
+.scoreboard__score--best {
+	border-color: rgba(192, 132, 252, 0.35);
+}
+
+.scoreboard__label {
+	color: #cbd5e1;
+	font-size: 0.9rem;
+	font-weight: 600;
+}
+
+.scoreboard__value {
+	font-size: clamp(1.5rem, 4vw, 2.25rem);
+	font-weight: 800;
+	line-height: 1.1;
+}
+
+/* Game Board */
+
+.game-board {
+	width: 100%;
+}
+
+.game-board__cards {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+/* Cards */
+
+.memory-card {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	width: 100%;
+	padding: 0.75rem;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 1rem;
+	color: inherit;
+	background-color: rgba(30, 41, 59, 0.9);
+	box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+	overflow: hidden;
+	transition:
+		transform 160ms ease,
+		border-color 160ms ease,
+		box-shadow 160ms ease;
+}
+
+.memory-card:hover {
+	transform: translateY(-0.3rem);
+	border-color: rgba(192, 132, 252, 0.7);
+	box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.3);
+}
+
+.memory-card:focus-visible {
+	outline: 0.2rem solid #60a5fa;
+	outline-offset: 0.2rem;
+}
+
+.memory-card__image {
+	display: block;
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	border-radius: 0.7rem;
+	object-fit: cover;
+}
+
+.memory-card__title {
+	margin: 0;
+	min-height: 3em;
+	color: #e2e8f0;
+	font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+	font-weight: 600;
+	line-height: 1.4;
+	text-align: center;
+}
+
+/* Loading and Error States */
+
+.app--loading,
+.app--error {
+	display: grid;
+	place-items: center;
+}
+
+.app-status {
+	margin: 0;
+	font-size: 1.1rem;
+	font-weight: 600;
+	text-align: center;
+}
+
+.app-status--error {
+	color: #fca5a5;
+}
+
+/* Footer */
+
+.app-footer {
+	margin-top: clamp(2rem, 5vw, 4rem);
+	padding-bottom: 1rem;
+	text-align: center;
+}
+
+.app-footer__attribution {
+	margin: 0;
+	color: #94a3b8;
+	font-size: 0.85rem;
+}
+
+/* Tablet */
+
+@media (max-width: 60rem) {
+	.game-board__cards {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+/* Mobile */
+
+@media (max-width: 40rem) {
+	.app {
+		padding: 1rem;
+	}
+
+	.scoreboard {
+		gap: 0.75rem;
+	}
+
+	.scoreboard__score {
+		flex: 1;
+		min-width: 0;
+		padding-inline: 0.75rem;
+	}
+
+	.game-board__cards {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.memory-card {
+		padding: 0.5rem;
+	}
+
+	.memory-card__title {
+		min-height: 0;
+	}
+
+    .game-topbar {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .game-header {
+        text-align: center;
+    }
+
+    .game-header__content {
+        align-items: center;
+    }
+
+    .scoreboard {
+        justify-content: center;
+    }
+}
